@@ -7,6 +7,7 @@ import {
     corprimaria,
     ingressocinema,
     maiornumero,
+    frequencia
 } from "./services.js";
 
 
@@ -80,11 +81,10 @@ server.get("/ping", (req, resp) => {
   });
   
   server.get("/dia2/freqcaracter/:texto/:caracter", (req, resp) => {
-    let qtd = 0;
-    for (let i = 0; i < qtd.length; i++) {
-      [i] = qtd - i;
-    }
-    resp.send({ qtd: qtd });
+    let texto = req.params.texto;
+    let caracter = req.params.caracter;
+    let x = frequencia(texto, caracter);
+    resp.send({ qtd: x });
   });
 
   export default server;
